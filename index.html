@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1A53D8" />
+  <title>Cendikiawan Ceria — Galeri Video & Prompt AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{--yellow:#F5B800;--blue:#1A53D8;--deep:#0D47A1;--bg:#F8FAFC;--ink:#1E293B}
+    *{box-sizing:border-box} body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink)}
+    .brand-mark{background:var(--yellow);color:#1645bd;border:3px solid #1645bd;box-shadow:0 4px 0 #d69e00,0 7px 15px #0f172a20}
+    .hero-bg{background:radial-gradient(circle at 80% 20%,#3e68b4 0,transparent 34%),linear-gradient(135deg,#1649b8 0%,#243b82 55%,#282f77 100%)}
+    .soft-shadow{box-shadow:0 12px 30px rgba(15,23,42,.07),0 2px 6px rgba(15,23,42,.04)}
+    .prompt-box{background:#0f172a;color:#dbe4f2;font-family:'Roboto Mono',monospace}
+    .line-clamp-prompt{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-wrap}
+    .social-btn{transition:transform .18s ease,filter .18s ease}.social-btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+    .modal-backdrop{background:rgba(15,23,42,.62);backdrop-filter:blur(5px)}
+    .toast{animation:toastIn .22s ease-out}@keyframes toastIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
+    .category-chip{white-space:nowrap}.video-frame{aspect-ratio:16/9}
+    button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #f5b800;outline-offset:2px}
+  </style>
+</head>
+<body>
+  <header class="sticky top-0 z-30 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#" class="flex min-w-0 items-center gap-3" aria-label="Cendikiawan Ceria beranda">
+        <span class="brand-mark flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-xl font-black sm:h-14 sm:w-14 sm:text-2xl">CC</span>
+        <span class="min-w-0">
+          <span class="block text-lg font-black leading-tight tracking-tight text-blue-800 sm:text-2xl">Cendikiawan Ceria</span>
+          <span class="hidden text-xs font-extrabold tracking-[.13em] text-slate-500 sm:block">AI &amp; EDUCATION HUB</span>
+        </span>
+      </a>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <nav class="hidden items-center gap-2 md:flex" aria-label="Media sosial">
+          <a class="social-btn rounded-xl px-3 py-2 text-sm font-bold text-slate-600 hover:bg-slate-100" href="https://youtube.com/@cendikiawanceria3608?si=e0s2fkumkksf9S4h" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube mr-1 text-red-600"></i>YouTube</a>
+          <a class="social-btn rounded-xl px-3 py-2 text-sm font-bold text-slate-600 hover:bg-slate-100" href="https://www.tiktok.com/@cendikiawan.ceria" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok mr-1"></i>TikTok</a>
+          <a class="social-btn rounded-xl px-3 py-2 text-sm font-bold text-slate-600 hover:bg-slate-100" href="https://www.instagram.com/cendikiawan.ceria?psln=M2NmOXY0cTZjbHhp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram mr-1 text-pink-600"></i>Instagram</a>
+        </nav>
+        <button id="openModalTop" class="rounded-xl bg-blue-700 px-3 py-2.5 text-sm font-extrabold text-white shadow-md shadow-blue-900/15 transition hover:bg-blue-800 sm:px-5 sm:text-base"><i class="fa-solid fa-plus mr-1"></i><span class="hidden sm:inline">Tambah Video &amp; Prompt</span><span class="sm:hidden">Tambah</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-bg relative overflow-hidden text-white">
+      <div class="pointer-events-none absolute -right-16 -top-20 h-72 w-72 rounded-full border-[35px] border-white/5"></div>
+      <div class="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full border-[45px] border-yellow-300/10"></div>
+      <div class="relative mx-auto max-w-7xl px-5 py-14 text-center sm:px-8 sm:py-20 lg:py-24">
+        <span class="inline-flex items-center gap-2 rounded-full border border-yellow-200/30 bg-yellow-300/15 px-4 py-2 text-xs font-extrabold tracking-wide text-yellow-300 sm:text-sm"><i class="fa-solid fa-wand-magic-sparkles"></i> PUSAT INSPIRASI PROMPT &amp; KONTEN AI</span>
+        <h1 class="mx-auto mt-6 max-w-4xl text-4xl font-black leading-[1.12] tracking-tight sm:text-5xl lg:text-6xl">Galeri Video &amp; <span class="text-yellow-300">Prompt AI</span> Cendikiawan Ceria</h1>
+        <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-blue-50/90 sm:text-lg sm:leading-8">Temukan inspirasi prompt AI, video edukasi anak, video AI, dan clipper. Jelajahi ide kreatif, salin prompt, lalu kembangkan karya Anda berikutnya.</p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <button id="openModalHero" class="social-btn rounded-2xl bg-yellow-400 px-6 py-3.5 font-black text-blue-950 shadow-lg shadow-black/15 hover:bg-yellow-300"><i class="fa-solid fa-plus mr-2"></i>Tambah Konten Baru</button>
+          <a class="social-btn rounded-2xl border border-white/25 bg-white/10 px-6 py-3.5 font-extrabold text-white hover:bg-white/15" href="https://youtube.com/@cendikiawanceria3608?si=e0s2fkumkksf9S4h" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube mr-2"></i>Kunjungi YouTube</a>
+        </div>
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <a class="social-btn inline-flex items-center gap-2 rounded-full bg-red-600 px-4 py-2 text-sm font-extrabold text-white" href="https://youtube.com/@cendikiawanceria3608?si=e0s2fkumkksf9S4h" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> Subscribe YouTube</a>
+          <a class="social-btn inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-extrabold text-white" href="https://www.tiktok.com/@cendikiawan.ceria" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i> Follow TikTok</a>
+          <a class="social-btn inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 px-4 py-2 text-sm font-extrabold text-white" href="https://www.instagram.com/cendikiawan.ceria?psln=M2NmOXY0cTZjbHhp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Follow Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10 lg:px-8" aria-label="Pencarian dan filter">
+      <div class="soft-shadow rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-lg text-slate-400"></i>
+          <input id="searchInput" type="search" placeholder="Cari judul video atau kata kunci prompt AI..." class="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-sm font-semibold outline-none transition placeholder:font-medium placeholder:text-slate-400 focus:border-blue-500 focus:bg-white sm:text-base" aria-label="Cari judul video atau isi prompt">
+        </div>
+        <div id="filterList" class="mt-4 flex gap-2 overflow-x-auto pb-1">
+          <button data-category="Semua Kategori" class="category-chip rounded-xl bg-blue-700 px-4 py-2.5 text-sm font-extrabold text-white">Semua Kategori</button>
+          <button data-category="Prompt AI" class="category-chip rounded-xl bg-slate-100 px-4 py-2.5 text-sm font-extrabold text-slate-600 hover:bg-blue-50"><span>🤖</span> Prompt AI</button>
+          <button data-category="Video Anak" class="category-chip rounded-xl bg-slate-100 px-4 py-2.5 text-sm font-extrabold text-slate-600 hover:bg-blue-50"><span>👶</span> Video Anak</button>
+          <button data-category="Clipper Video" class="category-chip rounded-xl bg-slate-100 px-4 py-2.5 text-sm font-extrabold text-slate-600 hover:bg-blue-50"><span>🎬</span> Clipper Video</button>
+          <button data-category="Video AI" class="category-chip rounded-xl bg-slate-100 px-4 py-2.5 text-sm font-extrabold text-slate-600 hover:bg-blue-50"><span>🌌</span> Video AI</button>
+        </div>
+        <div class="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-4">
+          <p id="resultCount" class="text-sm font-bold text-slate-500" aria-live="polite">Memuat koleksi...</p>
+          <button id="resetFilters" class="text-sm font-extrabold text-blue-700 hover:text-blue-900"><i class="fa-solid fa-rotate-left mr-1"></i>Reset filter</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+      <div id="contentGrid" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
+      <div id="emptyState" class="hidden rounded-3xl border-2 border-dashed border-slate-300 bg-white px-5 py-14 text-center">
+        <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-2xl text-blue-700"><i class="fa-solid fa-folder-open"></i></span>
+        <h2 class="mt-4 text-xl font-black">Konten tidak ditemukan</h2>
+        <p class="mt-2 text-slate-500">Coba kata kunci lain atau tambahkan video dan prompt baru.</p>
+        <button id="emptyAddBtn" class="mt-5 rounded-xl bg-blue-700 px-5 py-3 font-extrabold text-white hover:bg-blue-800">Tambah konten</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-6 bg-slate-950 text-white">
+    <div class="mx-auto flex max-w-7xl flex-col items-center gap-7 px-5 py-10 text-center sm:px-8 sm:py-12">
+      <div class="flex items-center gap-3">
+        <span class="brand-mark flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-black">CC</span>
+        <div class="text-left"><p class="text-xl font-black">Cendikiawan Ceria</p><p class="text-sm text-slate-400">AI &amp; Education Hub</p></div>
+      </div>
+      <p class="max-w-xl text-sm leading-6 text-slate-400">Pusat kreativitas, prompt AI, dan edukasi anak ceria. Ruang untuk mengumpulkan inspirasi dan berbagi ide kreatif.</p>
+      <div class="flex items-center gap-3">
+        <a aria-label="YouTube" class="social-btn flex h-11 w-11 items-center justify-center rounded-full bg-slate-800 text-lg hover:bg-red-600" href="https://youtube.com/@cendikiawanceria3608?si=e0s2fkumkksf9S4h" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+        <a aria-label="TikTok" class="social-btn flex h-11 w-11 items-center justify-center rounded-full bg-slate-800 text-lg hover:bg-slate-700" href="https://www.tiktok.com/@cendikiawan.ceria" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+        <a aria-label="Instagram" class="social-btn flex h-11 w-11 items-center justify-center rounded-full bg-slate-800 text-lg hover:bg-pink-600" href="https://www.instagram.com/cendikiawan.ceria?psln=M2NmOXY0cTZjbHhp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      <div class="w-full border-t border-slate-800 pt-5 text-xs text-slate-500">© <span id="year"></span> Cendikiawan Ceria (CC). All rights reserved.</div>
+    </div>
+  </footer>
+
+  <div id="contentModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="my-auto w-full max-w-xl rounded-3xl bg-white shadow-2xl">
+      <div class="flex items-start justify-between gap-4 border-b border-slate-100 px-5 py-5 sm:px-7">
+        <div><p class="text-xs font-black uppercase tracking-[.15em] text-blue-700">Koleksi CC</p><h2 id="modalTitle" class="mt-1 text-xl font-black sm:text-2xl">Tambah Video &amp; Prompt Baru</h2><p class="mt-1 text-sm text-slate-500">Konten disimpan di browser perangkat ini.</p></div>
+        <button id="closeModal" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200" aria-label="Tutup modal"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <form id="contentForm" class="space-y-4 px-5 py-5 sm:px-7 sm:py-6">
+        <div><label for="videoTitle" class="mb-1.5 block text-sm font-extrabold">Judul Video <span class="text-red-500">*</span></label><input id="videoTitle" name="title" required maxlength="140" placeholder="Contoh: Petualangan Si Kancil" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-blue-500"></div>
+        <div><label for="videoCategory" class="mb-1.5 block text-sm font-extrabold">Kategori <span class="text-red-500">*</span></label><select id="videoCategory" name="category" required class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500"><option>Prompt AI</option><option>Video Anak</option><option>Clipper Video</option><option>Video AI</option></select></div>
+        <div><label for="videoUrl" class="mb-1.5 block text-sm font-extrabold">Link Video YouTube <span class="font-medium text-slate-400">(opsional)</span></label><input id="videoUrl" name="url" type="url" placeholder="https://www.youtube.com/watch?v=..." class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-blue-500"><p class="mt-1.5 text-xs text-slate-500">Mendukung youtube.com/watch, youtu.be, Shorts, dan link embed.</p><p id="urlError" class="mt-1 hidden text-xs font-bold text-red-600">Link YouTube tidak valid. Periksa URL dan coba lagi.</p></div>
+        <div><label for="videoPrompt" class="mb-1.5 block text-sm font-extrabold">Teks Prompt AI <span class="text-red-500">*</span></label><textarea id="videoPrompt" name="prompt" required rows="5" placeholder="Tuliskan prompt AI lengkap yang digunakan..." class="w-full resize-y rounded-xl border border-slate-200 px-4 py-3 text-sm leading-6 outline-none focus:border-blue-500"></textarea></div>
+        <div class="flex flex-col-reverse gap-2 border-t border-slate-100 pt-4 sm:flex-row sm:justify-end"><button type="button" id="cancelModal" class="rounded-xl border border-slate-200 px-5 py-3 text-sm font-extrabold text-slate-600 hover:bg-slate-50">Batal</button><button type="submit" class="rounded-xl bg-blue-700 px-5 py-3 text-sm font-extrabold text-white shadow-md hover:bg-blue-800"><i class="fa-solid fa-floppy-disk mr-2"></i>Simpan Konten</button></div>
+      </form>
+    </div>
+  </div>
+  <div id="toast" class="toast fixed bottom-5 left-1/2 z-[60] hidden -translate-x-1/2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-extrabold text-white shadow-xl" role="status" aria-live="polite"><i class="fa-solid fa-circle-check mr-2 text-emerald-400"></i><span id="toastMessage">Prompt berhasil disalin!</span></div>
+
+  <script>
+    const STORAGE_KEY = 'cc-gallery-content-v1';
+    const categoryMeta = {
+      'Prompt AI': {emoji:'🤖', cls:'bg-violet-100 text-violet-800'},
+      'Video Anak': {emoji:'👶', cls:'bg-emerald-100 text-emerald-800'},
+      'Clipper Video': {emoji:'🎬', cls:'bg-orange-100 text-orange-800'},
+      'Video AI': {emoji:'🌌', cls:'bg-sky-100 text-sky-800'}
+    };
+    const starterContent = [
+      {id:'demo-1',title:'Petualangan Si Kancil & Hutan Ajaib',category:'Video Anak',url:'https://www.youtube.com/watch?v=aqz-KE-bpKQ',videoId:'aqz-KE-bpKQ',prompt:'Cute anthropomorphic mousedeer in a magical glowing forest, friendly smiling face, vibrant tropical flora, soft warm sunlight filtering through lush green leaves, colorful storybook 3D animation, expressive large eyes, child-friendly Indonesian folklore atmosphere, cinematic wide shot, smooth camera movement, detailed textures, cheerful and adventurous mood, high quality, 16:9 aspect ratio. Keep the character design consistent across every scene.',date:'2026-10-10',description:'Contoh prompt cerita anak bernuansa dongeng, persahabatan, dan petualangan.'},
+      {id:'demo-2',title:'Dunia Tata Surya untuk Anak',category:'Prompt AI',url:'https://www.youtube.com/watch?v=jfKfPfyJRdk',videoId:'jfKfPfyJRdk',prompt:'Create a fun educational animation introducing the solar system to children ages 5–9. Show the Sun and eight planets in correct order, each planet with a friendly expressive face while retaining recognizable colors and features. Use a bright blue space background, gentle orbit motion, playful transitions, clear visual spacing, soft 3D cartoon rendering, warm narration-friendly pacing, and a curious, wonder-filled mood. Avoid inaccurate planet order. 16:9, high detail, no on-screen text.',date:'2026-10-08',description:'Prompt edukasi sains dengan visual yang cerah dan mudah dipahami.'},
+      {id:'demo-3',title:'3 Ide Konten Edukasi dalam 30 Detik',category:'Clipper Video',url:'https://www.youtube.com/watch?v=ScMzIvxBSi4',videoId:'ScMzIvxBSi4',prompt:'Transform the source into a concise vertical short-form educational clip. Start with a curiosity-driven hook in the first 2 seconds, select the three most useful moments, remove pauses and filler, use clean jump cuts, add readable Indonesian captions with strong contrast, subtle punch-in zooms, and light background music below the voice. End with one memorable takeaway. Keep all claims faithful to the original source. 9:16 vertical format, 30–40 seconds.',date:'2026-10-05',description:'Contoh alur prompt untuk menyusun klip pendek yang padat dan menarik.'},
+      {id:'demo-4',title:'Kota Futuristik di Atas Awan',category:'Video AI',url:'https://www.youtube.com/watch?v=ysz5S6PUM-U',videoId:'ysz5S6PUM-U',prompt:'A breathtaking futuristic floating city above a sea of soft clouds at golden hour, elegant white architecture with cobalt-blue glass accents, tiny flying transport gliding between towers, sunlight scattering through atmospheric mist, birds circling distant spires, slow cinematic aerial camera push forward, rich volumetric lighting, realistic materials blended with imaginative concept art, peaceful optimistic mood, stable geometry, coherent motion, ultra-detailed, 16:9 widescreen composition.',date:'2026-10-01',description:'Inspirasi visual sinematik untuk eksperimen generative video AI.'}
+    ];
+    let content = loadContent();
+    let activeCategory = 'Semua Kategori';
+    let searchTerm = '';
+    let toastTimer;
+
+    function loadContent(){
+      try { const saved = localStorage.getItem(STORAGE_KEY); if(saved){const parsed=JSON.parse(saved); if(Array.isArray(parsed)) return parsed;} } catch(e){console.warn('Data lokal tidak dapat dibaca:',e);}
+      return starterContent.map(item=>({...item}));
+    }
+    function persistContent(){
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(content)); }
+      catch(e){showToast('Penyimpanan browser penuh atau tidak tersedia.');}
+    }
+    function escapeHTML(value=''){
+      return String(value).replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    }
+    function getVideoId(raw){
+      if(!raw || !raw.trim()) return '';
+      try{
+        const u = new URL(raw.trim());
+        const host = u.hostname.toLowerCase().replace(/^www\./,'').replace(/^m\./,'');
+        if(host==='youtu.be') return u.pathname.split('/').filter(Boolean)[0] || '';
+        if(host==='youtube.com' || host==='youtube-nocookie.com' || host==='music.youtube.com'){
+          if(u.pathname==='/watch') return u.searchParams.get('v') || '';
+          const parts=u.pathname.split('/').filter(Boolean);
+          if(['embed','shorts','live','v'].includes(parts[0])) return parts[1] || '';
+        }
+      }catch(e){return '';}
+      return '';
+    }
+    function isValidId(id){return /^[a-zA-Z0-9_-]{11}$/.test(id || '');}
+    function youtubeUrl(item){return item.videoId ? `https://www.youtube.com/watch?v=${encodeURIComponent(item.videoId)}` : (item.url || 'https://youtube.com/@cendikiawanceria3608');}
+    function formatDate(value){
+      if(!value) return 'Tanggal tidak tersedia';
+      const d = new Date(value+'T00:00:00');
+      if(Number.isNaN(d.getTime())) return escapeHTML(value);
+      return new Intl.DateTimeFormat('id-ID',{day:'numeric',month:'short',year:'numeric'}).format(d);
+    }
+    function render(){
+      const filtered = content.filter(item=>{
+        const categoryMatch = activeCategory==='Semua Kategori' || item.category===activeCategory;
+        const haystack = `${item.title||''} ${item.prompt||''} ${item.description||''}`.toLocaleLowerCase('id');
+        return categoryMatch && haystack.includes(searchTerm.toLocaleLowerCase('id'));
+      });
+      document.getElementById('resultCount').textContent = `${filtered.length} konten ditemukan`;
+      const grid=document.getElementById('contentGrid');
+      document.getElementById('emptyState').classList.toggle('hidden',filtered.length!==0);
+      grid.innerHTML=filtered.map(item=>{
+        const meta=categoryMeta[item.category] || categoryMeta['Prompt AI'];
+        const validId=isValidId(item.videoId);
+        const prompt=escapeHTML(item.prompt||'');
+        const promptLong=(item.prompt||'').length>220;
+        const videoMarkup=validId
+          ? `<iframe class="video-frame w-full bg-slate-950" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(item.videoId)}" title="${escapeHTML(item.title)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+          : `<div class="video-frame flex w-full flex-col items-center justify-center bg-gradient-to-br from-slate-900 to-blue-950 px-5 text-center text-white"><i class="fa-brands fa-youtube text-4xl text-red-500"></i><p class="mt-3 font-extrabold">Video YouTube belum ditambahkan</p><p class="mt-1 text-xs text-slate-300">Buka tautan YouTube untuk melihat referensi.</p></div>`;
+        return `<article class="soft-shadow flex min-w-0 flex-col overflow-hidden rounded-3xl border border-slate-200/70 bg-white transition duration-200 hover:-translate-y-1 hover:shadow-xl">
+          <div class="flex items-center justify-between gap-2 px-5 pb-3 pt-5"><span class="rounded-full px-3 py-1.5 text-xs font-black ${meta.cls}">${meta.emoji} ${escapeHTML(item.category)}</span><span class="shrink-0 text-xs font-bold text-slate-400"><i class="fa-regular fa-calendar mr-1"></i>${formatDate(item.date)}</span></div>
+          <div class="overflow-hidden bg-slate-950">${videoMarkup}</div>
+          <div class="flex flex-1 flex-col p-5">
+            <h2 class="text-xl font-black leading-snug text-slate-800">${escapeHTML(item.title)}</h2>
+            ${item.description?`<p class="mt-2 text-sm leading-6 text-slate-500">${escapeHTML(item.description)}</p>`:''}
+            <div class="prompt-box mt-5 overflow-hidden rounded-2xl border border-slate-800">
+              <div class="flex items-center justify-between gap-2 border-b border-white/10 px-4 py-3"><span class="text-xs font-black tracking-wide text-yellow-300"><i class="fa-solid fa-code mr-1.5"></i>TEKS PROMPT AI</span><button data-copy="${escapeHTML(item.id)}" class="shrink-0 rounded-lg bg-blue-700 px-3 py-2 text-xs font-extrabold text-white transition hover:bg-blue-600"><i class="fa-regular fa-copy mr-1"></i>Salin Prompt</button></div>
+              <div class="px-4 py-4"><p id="prompt-${escapeHTML(item.id)}" class="whitespace-pre-wrap break-words text-sm leading-6 ${promptLong?'line-clamp-prompt':''}">${prompt || '<span class="text-slate-400">Belum ada teks prompt.</span>'}</p>${promptLong?`<button data-expand="${escapeHTML(item.id)}" class="mt-3 text-xs font-extrabold text-yellow-300 hover:text-yellow-200">Lihat selengkapnya <i class="fa-solid fa-chevron-down ml-1"></i></button>`:''}</div>
+            </div>
+            <div class="mt-auto pt-5"><a class="flex items-center justify-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-sm font-black text-red-600 transition hover:bg-red-100" href="${escapeHTML(youtubeUrl(item))}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube text-lg"></i>Buka di YouTube <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs"></i></a></div>
+          </div>
+        </article>`;
+      }).join('');
+    }
+    function showToast(message){
+      const toast=document.getElementById('toast'); document.getElementById('toastMessage').textContent=message;
+      toast.classList.remove('hidden'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>toast.classList.add('hidden'),2600);
+    }
+    async function copyPrompt(id){
+      const item=content.find(x=>String(x.id)===String(id)); if(!item) return;
+      try{
+        if(navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(item.prompt||'');
+        else {
+          const area=document.createElement('textarea'); area.value=item.prompt||''; area.style.position='fixed'; area.style.opacity='0'; document.body.appendChild(area); area.select();
+          const ok=document.execCommand('copy'); area.remove(); if(!ok) throw new Error('copy failed');
+        }
+        showToast('Prompt berhasil disalin!');
+      }catch(e){showToast('Gagal menyalin. Coba salin teks secara manual.');}
+    }
+    const modal=document.getElementById('contentModal');
+    function openModal(){modal.classList.remove('hidden');modal.classList.add('flex');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('videoTitle').focus(),60);}
+    function closeModal(){modal.classList.add('hidden');modal.classList.remove('flex');document.body.style.overflow='';}
+    ['openModalTop','openModalHero','emptyAddBtn'].forEach(id=>document.getElementById(id).addEventListener('click',openModal));
+    ['closeModal','cancelModal'].forEach(id=>document.getElementById(id).addEventListener('click',closeModal));
+    modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.classList.contains('hidden'))closeModal();});
+    document.getElementById('searchInput').addEventListener('input',e=>{searchTerm=e.target.value.trim();render();});
+    document.getElementById('filterList').addEventListener('click',e=>{
+      const btn=e.target.closest('button[data-category]'); if(!btn)return; activeCategory=btn.dataset.category;
+      document.querySelectorAll('#filterList button').forEach(b=>{const active=b===btn;b.className=`category-chip rounded-xl px-4 py-2.5 text-sm font-extrabold ${active?'bg-blue-700 text-white':'bg-slate-100 text-slate-600 hover:bg-blue-50'}`;});
+      render();
+    });
+    document.getElementById('resetFilters').addEventListener('click',()=>{
+      activeCategory='Semua Kategori';searchTerm='';document.getElementById('searchInput').value='';
+      document.querySelectorAll('#filterList button').forEach((b,i)=>{b.className=`category-chip rounded-xl px-4 py-2.5 text-sm font-extrabold ${i===0?'bg-blue-700 text-white':'bg-slate-100 text-slate-600 hover:bg-blue-50'}`;});render();
+    });
+    document.getElementById('contentGrid').addEventListener('click',e=>{
+      const copy=e.target.closest('[data-copy]');if(copy){copyPrompt(copy.dataset.copy);return;}
+      const expand=e.target.closest('[data-expand]');if(expand){
+        const p=document.getElementById(`prompt-${expand.dataset.expand}`);const collapsed=p.classList.toggle('line-clamp-prompt');
+        expand.innerHTML=collapsed?'Lihat selengkapnya <i class="fa-solid fa-chevron-down ml-1"></i>':'Tampilkan lebih sedikit <i class="fa-solid fa-chevron-up ml-1"></i>';
+      }
+    });
+    document.getElementById('videoUrl').addEventListener('input',()=>document.getElementById('urlError').classList.add('hidden'));
+    document.getElementById('contentForm').addEventListener('submit',e=>{
+      e.preventDefault();
+      const title=document.getElementById('videoTitle').value.trim();
+      const category=document.getElementById('videoCategory').value;
+      const url=document.getElementById('videoUrl').value.trim();
+      const prompt=document.getElementById('videoPrompt').value.trim();
+      const videoId=getVideoId(url);
+      const urlError=document.getElementById('urlError');
+      if(url && !isValidId(videoId)){urlError.classList.remove('hidden');document.getElementById('videoUrl').focus();return;}
+      urlError.classList.add('hidden');
+      if(!title||!prompt)return;
+      content.unshift({id:`cc-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,title,category,url,videoId,prompt,date:new Date().toISOString().slice(0,10),description:''});
+      persistContent();render();closeModal();e.target.reset();activeCategory='Semua Kategori';searchTerm='';
+      document.getElementById('searchInput').value='';
+      document.querySelectorAll('#filterList button').forEach((b,i)=>{b.className=`category-chip rounded-xl px-4 py-2.5 text-sm font-extrabold ${i===0?'bg-blue-700 text-white':'bg-slate-100 text-slate-600 hover:bg-blue-50'}`;});
+      showToast('Video & prompt berhasil ditambahkan!');document.getElementById('contentGrid').scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    document.getElementById('year').textContent=new Date().getFullYear();
+    render();
+  </script>
+</body>
+</html>
